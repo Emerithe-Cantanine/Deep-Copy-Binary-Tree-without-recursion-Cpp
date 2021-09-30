@@ -1,18 +1,9 @@
+// Written by Emerithe Cantanine on September 28, 2021
+
 #include <iostream>
 #include <vector>
 
 using namespace std;
-
-int recursion(int num)
-{
-	num += 1;
-	cout << num << endl;
-
-	if (num == -1)
-		return -1;
-
-	recursion(num);
-}
 
 struct treeType
 {
@@ -41,12 +32,9 @@ struct treeType
 
 treeType* DeepCopy(treeType* __original)
 {
-	// https://stackoverflow.com/questions/383016/how-do-stl-containers-get-deleted
-	// In this stackoverflow page it confirms that the objects pointed to, in a vector of pointers, will not be deleted when the vector is deleted.
 	vector<treeType*> originalStack;	// original
 	vector<treeType*> copyStack;		// copy
-	treeType* original = __original;
-	treeType* current = original;
+	treeType* current = __original;
 	originalStack.push_back(NULL);	// Mark an obvious stopping point.
 	treeType* copy = new(treeType);
 	treeType* runner = copy;
@@ -100,8 +88,8 @@ treeType* DeepCopy(treeType* __original)
 
 int main()
 {
-	// recursion(1);
-	cout << sizeof(treeType);
+	cout << sizeof(treeType);	// x86: 12 bytes, x64: 24 bytes
+	// I highly recommend compiling in x64 if you do trees of more than 20 levels.
 	treeType thing(26);	// make a tree with roughly 1000 nodes;
 
 	treeType* copy = DeepCopy(&thing);
