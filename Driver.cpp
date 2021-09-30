@@ -45,7 +45,7 @@ treeType* DeepCopy(treeType* __original)
 	// In this stackoverflow page it confirms that the objects pointed to, in a vector of pointers, will not be deleted when the vector is deleted.
 	vector<treeType*> originalStack;	// original
 	vector<treeType*> copyStack;		// copy
-	treeType* original = __original;	// setting original to 'this' can only be done here.
+	treeType* original = __original;
 	treeType* current = original;
 	originalStack.push_back(NULL);	// Mark an obvious stopping point.
 	treeType* copy = new(treeType);
